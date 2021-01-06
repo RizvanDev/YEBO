@@ -1,0 +1,41 @@
+.footer {
+  padding: 100px 0;
+  background-color: #f7f7f7;
+}
+
+.footer__row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.footer__address {
+  color: #848789;
+  line-height: 17.87px;
+}
+.footer__address span:nth-child(1) {
+  font-style: normal;
+  font-size: 16px;
+  font-weight: 700;
+}
+.footer__address span {
+  display: block;
+  font-style: italic;
+  font-size: 13.9px;
+}
+
+.footer__links a + a {
+  padding-left: 15px;
+}
+
+.footer__autor {
+  display: flex;
+  align-items: center;
+}
+.footer__autor span {
+  font-style: italic;
+  font-size: 13.9px;
+  line-height: 17.87px;
+  color: #848789;
+  margin-right: 9px;
+}
