@@ -4,6 +4,7 @@ ___
 ###### _Cдесь я использовал:_
 
 * ![](images/for_readmi/html5.png) HTML
+  * _kit_
 * ![](images/for_readmi/css.png)CSS
   * _sass ( scss )_
 * ![](images/for_readmi/java-script.png)Java Script
