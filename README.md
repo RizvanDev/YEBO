@@ -1,7 +1,7 @@
 ### Стартовая страница сайта..
 ___
 
-######_Cдесь я использовал:_
+###### _Cдесь я использовал:_
 
 * ![](images/for_readmi/html5.png) HTML
 * ![](images/for_readmi/css.png)CSS
