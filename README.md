@@ -10,4 +10,4 @@ ___
 * ![](images/for_readmi/jquery.png)Jquery
   * _slick-carousel_
   <br>
-[Просмотреть](https://rizvandev.github.io/JOOMHOST/)
+[Просмотреть](https://rizvandev.github.io/YEBO/.)
