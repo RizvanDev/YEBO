@@ -9,5 +9,5 @@ ___
 * ![](images/for_readmi/java-script.png)Java Script
 * ![](images/for_readmi/jquery.png)Jquery
   * _slick-carousel_
-  <br>
-[Просмотреть](https://rizvandev.github.io/YEBO/.)
+
+[![](https://img.shields.io/badge/-перейти_на_страницу-3f3f3f?style=for-the-badge&logo=github)](https://rizvandev.github.io/YEBO/.)
