@@ -1,0 +1,42 @@
+.my-slider {
+   position: relative;
+}
+.my-slider__wrapper {
+   overflow: hidden;
+}
+.my-slider__container {
+   display: flex;
+}
+.my-slider__slide {
+   flex: 1 0 100%;
+}
+.my-slider__prev,
+.my-slider__next {
+   position: absolute;
+   top: 50%;
+   transform: translateY(-50%);
+   border: none;
+}
+.my-slider__prev {
+   left: 0;
+}
+.my-slider__next {
+   right: 0;
+}
+.my-slider__dots {
+   position: absolute;
+   bottom: 0;
+   left: 50%;
+   transform: translateX(-50%);
+   display: flex;
+   .--invisible {
+      visibility: hidden;
+   }
+}
+.my-slider__dot {
+   width: 10px;
+   height: 10px;
+   border-radius: 50%;
+   border: 1px solid #666;
+   cursor: pointer;
+}
