@@ -19,15 +19,17 @@ const showHeader = () => {
 
    const invisibleHeader = () => {
 
-      if (window.pageYOffset > 120) {
+      if (document.body.clientWidth > 767 && window.pageYOffset > 120) {
          header.classList.add('--hidden')
          window.addEventListener('mousemove', move)
       } else {
          header.classList.remove('--hidden')
       }
 
-      if (document.body.clientWidth > 767) {
-         window.pageYOffset > 826 ? header.style.backgroundColor = '#282f35' : header.style.backgroundColor = '#0009'
+      if (document.body.clientWidth > 767 && window.pageYOffset > 826) {
+         header.classList.add('--headerColor')
+      } else {
+         header.classList.remove('--headerColor')
       }
    }
 
