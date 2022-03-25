@@ -12,7 +12,7 @@
 <body>
    <div class="wrapper">
       <main class="page">
-         <!---     header     --->
+         <!--     header     -->
          <header class="header --hidden">
             <div class="container">
                <div class="header__row">
@@ -29,10 +29,7 @@
                         </ul>
                         <div class="footer__logo for-menu">
                            <span class="footer__logo-text">Handcrafted by</span>
-                           <svg version="1.0" xmlns="http://www.w3.org/2000/svg" width="45.000000pt"
-                              height="36.000000pt" viewBox="0 0 55.000000 36.000000"
-                              preserveAspectRatio="xMidYMid meet">
-
+                           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 55.000000 36.000000">
                               <g transform="translate(0.000000,36.000000) scale(0.100000,-0.100000)" fill="#fff"
                                  stroke="#000">
                                  <path d="M321 329 c-6 -18 -11 -55 -11 -84 0 -55 -27 -105 -56 -105 -21 0 -17
@@ -58,7 +55,7 @@
                </div>
             </div>
          </header>
-         <!---     mainscreen    --->
+         <!--     mainscreen    -->
          <div class="main-screen__bg">
             <picture>
                <source srcset="./images/img/bg-mobile.jpg" type="image/jpg" media="(max-width:767px)">
@@ -70,13 +67,13 @@
                <span> - with us!</span>
             </h1>
          </div>
-         <!---      content     --->
+         <!--      content     -->
          <div class="content">
-            <!---    about    --->
+            <!--    about    -->
             <section class="about scrollEnd">
                <div class="container">
                   <div class="about__icon"><img src="./images/icons/about-icon.svg" alt=""></div>
-                  <div class="about__title">ABOUT THIS PAGE</div>
+                  <h2 class="about__title">ABOUT THIS PAGE</h2>
                   <p class="about__text">
                      Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been
                      the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley
@@ -85,7 +82,7 @@
                   </p>
                </div>
             </section>
-            <!---     company    --->
+            <!--     company    -->
             <div class="company scrollEnd">
                <div class="company__column-1">
                   <div class="company__column-big">
@@ -164,7 +161,7 @@
                   </div>
                </div>
             </div>
-            <!---     slider     --->
+            <!--     slider     -->
             <div class="articles-slider my-slider">
                <div class="articles-slider__wrapper my-slider__wrapper">
                   <div class="articles-slider__container my-slider__container">
@@ -213,7 +210,7 @@
                   <span class="articles-slider__dot my-slider__dot"></span>
                </div>
             </div>
-            <!---     shop     --->
+            <!--     shop     -->
             <div class="shop scrollEnd">
                <div class="shop__top">
                   <div class="shop__big-column">
@@ -263,18 +260,18 @@
                   <a href="" class="shop__bottom-link"><span class="shop__link-text">DISCOVER THE SHOP</span></a>
                </div>
             </div>
-            <!---     form     --->
+            <!--     form     -->
             <div class="form container">
                <div class="form__logo"><a href=""><img src="./images/icons/logo.svg" alt=""></a></div>
                <div class="form__title">Stay on the saddle!</div>
                <form class="form__form">
-                  <input class="form__input" type="mail" placeholder="enter yor email..." required>
+                  <input class="form__input" type="email" placeholder="enter yor email..." required>
                   <button class="form__btn" type="submit">GO</button>
                </form>
             </div>
          </div>
       </main>
-      <!---     footer     --->
+      <!--     footer     -->
       <footer class="footer">
          <div class="footer__row container">
             <div class="footer__info">
@@ -290,9 +287,7 @@
             </div>
             <div class="footer__logo">
                <span class="footer__logo-text">Handcrafted by</span>
-               <svg version="1.0" xmlns="http://www.w3.org/2000/svg" width="55.000000pt" height="36.000000pt"
-                  viewBox="0 0 55.000000 36.000000" preserveAspectRatio="xMidYMid meet">
-
+               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 55.000000 36.000000">
                   <g transform="translate(0.000000,36.000000) scale(0.100000,-0.100000)" fill="#000000" stroke="none">
                      <path d="M321 329 c-6 -18 -11 -55 -11 -84 0 -55 -27 -105 -56 -105 -21 0 -17
            28 6 35 37 12 41 88 4 93 -24 3 -48 -21 -61 -62 -5 -17 -15 -32 -23 -34 -10
@@ -314,6 +309,7 @@
          </div>
       </footer>
    </div>
+   <!--     contact modal     -->
    <div class="contact-modal">
       <div class="contact-modal__container">
          <div class="contact-modal__title">CONTACTS</div>
@@ -340,9 +336,10 @@
          <button type="button" class="contact-modal__close">BACK</button>
       </div>
    </div>
+   <!--     callback btn     -->
    <button type="button" class="callback-btn">
-      <div class="callback-btn__container">
-         <svg version="1.0" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512.000000 512.000000">
+      <span class="callback-btn__container">
+         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512.000000 512.000000">
             <g transform="translate(0.000000,512.000000) scale(0.100000,-0.100000)" fill="#000000" stroke="none">
                <path d="M300 5104 c-141 -38 -247 -146 -284 -289 -25 -92 -16 -370 19 -665
 151 -1247 790 -2373 1790 -3156 599 -469 1333 -794 2085 -924 263 -45 648 -77
@@ -355,8 +352,9 @@
             </g>
          </svg>
          <span class="callback-btn__text">CALL</span>
-      </div>
+      </span>
    </button>
+   <!--     callback modal     -->
    <div class="callback-modal">
       <div class="callback-modal__container">
          <div class="callback-modal__title">CALLBACK</div>
@@ -374,10 +372,11 @@
          <pre class="callback-modal__outtext">don't miss our call!</pre>
       </div>
    </div>
+   <!--     share     -->
    <div class="share">
       <a href="" class="share__link f">
          <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 32 32"
-            version="1.1" role="img" aria-labelledby="at-svg-facebook-3">
+            version="1.1" role="img">
             <g>
                <path
                   d="M22 5.16c-.406-.054-1.806-.16-3.43-.16-3.4 0-5.733 1.825-5.733 5.17v2.882H9v3.913h3.837V27h4.604V16.965h3.823l.587-3.913h-4.41v-2.5c0-1.123.347-1.903 2.198-1.903H22V5.16z"
@@ -386,7 +385,7 @@
          </svg>
       </a>
       <a href="" class="share__link i">
-         <svg fill="#000000" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 50 50" width="50px" height="50px">
+         <svg fill="#000000" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 50 50">
             <path fill="none" stroke="#000000" stroke-miterlimit="10" stroke-width="2"
                d="M16,46h18c6.627,0,12-5.373,12-12V16c0-6.627-5.373-12-12-12H16C9.373,4,4,9.373,4,16v18C4,40.627,9.373,46,16,46z" />
             <path fill="none" stroke="#000000" stroke-miterlimit="10" stroke-width="2"
@@ -396,7 +395,7 @@
       </a>
       <a href="" class="share__link t">
          <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 32 32"
-            version="1.1" role="img" aria-labelledby="at-svg-twitter-4">
+            version="1.1" role="img">
             <g>
                <path
                   d="M27.996 10.116c-.81.36-1.68.602-2.592.71a4.526 4.526 0 0 0 1.984-2.496 9.037 9.037 0 0 1-2.866 1.095 4.513 4.513 0 0 0-7.69 4.116 12.81 12.81 0 0 1-9.3-4.715 4.49 4.49 0 0 0-.612 2.27 4.51 4.51 0 0 0 2.008 3.755 4.495 4.495 0 0 1-2.044-.564v.057a4.515 4.515 0 0 0 3.62 4.425 4.52 4.52 0 0 1-2.04.077 4.517 4.517 0 0 0 4.217 3.134 9.055 9.055 0 0 1-5.604 1.93A9.18 9.18 0 0 1 6 23.85a12.773 12.773 0 0 0 6.918 2.027c8.3 0 12.84-6.876 12.84-12.84 0-.195-.005-.39-.014-.583a9.172 9.172 0 0 0 2.252-2.336"
