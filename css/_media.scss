@@ -113,19 +113,19 @@
    .home:hover {
       color: rgb(22, 177, 22);
       &::before {
-         background: url("/images/icons/call-hover.png") no-repeat;
+         background: url("./images/icons/call-hover.png") no-repeat;
       }
    }
    .mobile:hover {
       color: rgb(22, 177, 22);
       &::before {
-         background: url("/images/icons/phone-call-hover.png") no-repeat;
+         background: url("./images/icons/phone-call-hover.png") no-repeat;
       }
    }
    .mail:hover {
       color: skyblue;
       &::before {
-         background: url("/images/icons/email-hover.png") no-repeat;
+         background: url("./images/icons/email-hover.png") no-repeat;
       }
    }
    .home,
