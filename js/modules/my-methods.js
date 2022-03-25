@@ -149,7 +149,7 @@ const myObject = {
 
          endX = startX - moveX
 
-         if (endX > 80) {
+         if (endX > 60) {
             step++
             if (step >= slides.length) step = 0
             infinityScroll()
@@ -159,7 +159,7 @@ const myObject = {
             clearInterval(intervalScroll)
          }
 
-         if (endX < -80) {
+         if (endX < -60) {
             step--
             if (step < 0) step = slides.length - 1
             infinityScroll()
