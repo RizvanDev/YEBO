@@ -8,13 +8,10 @@ const header = document.querySelector('.header')
 
 // preload 
 const preloading = () => {
-
-   const preloadContainer = document.querySelector('.preload')
-
-   preloadContainer.style.display = 'none'
-
+   document.querySelector('.preload').style.display = 'none'
    document.body.classList.remove('--lock')
 }
+
 setTimeout(() => preloading(), 2000)
 
 // header and title time
