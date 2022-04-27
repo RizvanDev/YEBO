@@ -42,6 +42,7 @@ const clickMobileMenu = () => {
    header.classList.toggle('--active')
    header.classList.contains('--active') ? document.body.classList.add('--lock') : document.body.classList.remove('--lock')
 }
+
 if (document.querySelector('.menu__icon')) document.querySelector('.menu__icon').addEventListener('click', clickMobileMenu)
 
 // contact modal
@@ -58,6 +59,7 @@ const showContactModal = () => {
 }
 showContactModal()
 
+
 // navigation scroll
 const navigationScroll = () => {
 
@@ -66,12 +68,12 @@ const navigationScroll = () => {
 
    if (scrollEnd.length > 0) {
 
-      for (let i = 0; i < scrollStart.length; i++) {
+      scrollStart.forEach((_, index) => {
 
          const scrollingStart = event => {
             event.preventDefault()
 
-            let height = scrollEnd[i].offsetTop
+            let height = scrollEnd[index].offsetTop
 
             window.scrollTo({
                top: height,
@@ -81,8 +83,8 @@ const navigationScroll = () => {
             if (document.body.clientWidth < 768) clickMobileMenu()
          }
 
-         scrollStart[i].addEventListener('click', scrollingStart)
-      }
+         scrollStart[index].addEventListener('click', scrollingStart)
+      })
    }
 }
 navigationScroll()
@@ -134,7 +136,19 @@ const callbackUser = () => {
    }
    showModal()
 
-   const formDone = () => {
+   const emailForm = () => {
+
+      const emailInput = document.querySelector('.form__input')
+      const emailBtn = document.querySelector('.form__btn')
+
+      const emailDone = e => e.target.validity.valid === true ? emailBtn.classList.add('--emailDone') : emailBtn.classList.remove('--emailDone')
+
+      emailInput.addEventListener('keyup', emailDone)
+   }
+   emailForm()
+
+   const callbackFormDone = () => {
+
 
       form.addEventListener('click', (e) => {
 
@@ -158,7 +172,7 @@ const callbackUser = () => {
 
       return form.addEventListener('submit', event => event.preventDefault())
    }
-   formDone()
+   callbackFormDone()
 
    return window.addEventListener('scroll', showBtn)
 }

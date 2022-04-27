@@ -1,4 +1,3 @@
-
 const myObject = {
 
    modal: (obj) => {
@@ -49,6 +48,8 @@ const myObject = {
          dotsContainer.insertBefore(firstDotClone, dotsContainer.firstChild)
       }
 
+      dots = [...dots]
+
       const infinityScroll = () => {
 
          const jumping = () => {
@@ -65,8 +66,11 @@ const myObject = {
 
       // buttons
       if (prevBtn) prevBtn.addEventListener('click', () => {
+
          step--
+
          if (step < 0) step = slides.length - 1
+
          infinityScroll()
          transitionScroll()
          scrolling()
@@ -75,8 +79,11 @@ const myObject = {
       })
 
       if (nextBtn) nextBtn.addEventListener('click', () => {
+
          step++
+
          if (step >= slides.length) step = 0
+
          infinityScroll()
          transitionScroll()
          scrolling()
@@ -88,8 +95,11 @@ const myObject = {
       let intervalScroll
 
       const scroll = () => {
+
          step++
+
          if (step >= slides.length) step = 0
+
          infinityScroll()
          transitionScroll()
          scrolling()
@@ -98,12 +108,10 @@ const myObject = {
 
       if (auto) intervalScroll = setInterval(scroll, autoTime)
 
+
+
       // dots
-      const removeActiveDots = () => {
-         for (let i = 0; i < dots.length; i++) {
-            dots[i].classList.remove('--active')
-         }
-      }
+      const removeActiveDots = () => dots.forEach((_, index) => dots[index].classList.remove('--active'))
 
       const activeDot = () => {
 
@@ -119,20 +127,21 @@ const myObject = {
 
       const pushDot = () => {
 
-         for (let i = 0; i < dots.length; i++) {
-            dots[i].addEventListener('click', () => {
+         dots.forEach((_, index) => {
+            dots[index].addEventListener('click', () => {
 
                removeActiveDots()
 
-               dots[i].classList.add('--active')
-               step = i
+               dots[index].classList.add('--active')
+               step = index
 
                infinityScroll()
                scrolling()
                transitionScroll()
                clearInterval(intervalScroll)
             })
-         }
+         })
+
       }
       pushDot()
 
@@ -150,8 +159,11 @@ const myObject = {
          endX = startX - moveX
 
          if (endX > 60) {
+
             step++
+
             if (step >= slides.length) step = 0
+
             infinityScroll()
             scrolling()
             activeDot()
@@ -160,8 +172,11 @@ const myObject = {
          }
 
          if (endX < -60) {
+
             step--
+
             if (step < 0) step = slides.length - 1
+
             infinityScroll()
             scrolling()
             activeDot()
@@ -180,6 +195,7 @@ const myObject = {
       const transitionScroll = () => transition ? container.style.transition = `all ${transitionTime}s ${transitionType}` : false
 
    }
+
 }
 
 export const { modal: myModal, slider: mySlider } = myObject

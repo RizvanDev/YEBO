@@ -824,12 +824,22 @@ body.--lock {
   color: #929292;
 }
 
+.form__input:required:valid {
+  border-color: #01bd46;
+}
+
 .form__btn {
   padding: 18.5px 40px;
   background-color: #64c29e;
   font-weight: 300;
   font-size: 24px;
   color: #fff;
+  -webkit-transition: background-color .2s ease;
+  transition: background-color .2s ease;
+}
+
+.form__btn.--emailDone {
+  background-color: #01bd46;
 }
 
 .footer {
