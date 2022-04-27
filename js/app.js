@@ -5,12 +5,21 @@ import { mySlider, myModal } from "./modules/my-methods.js"
 
 const header = document.querySelector('.header')
 
-// header and title time
-const animationTop = () => {
-   setTimeout(() => header.classList.remove('--hidden'), 2800)
-   setTimeout(() => document.querySelector('.main__title').style.visibility = 'visible', 1000)
+
+// preload 
+const preloading = () => {
+
+   const preloadContainer = document.querySelector('.preload')
+
+   preloadContainer.style.display = 'none'
+
+   document.body.classList.remove('--lock')
 }
-animationTop()
+setTimeout(() => preloading(), 2000)
+
+// header and title time
+setTimeout(() => document.querySelector('.main__title').style.visibility = 'visible', 2500)
+setTimeout(() => header.classList.remove('--hidden'), 4000)
 
 // show header
 const showHeader = () => {
@@ -179,4 +188,4 @@ const callbackUser = () => {
 callbackUser()
 
 // share 
-setTimeout(() => document.querySelector('.share').classList.add('--show-icons'), 3500)
+setTimeout(() => document.querySelector('.share').classList.add('--show-icons'), 4000)

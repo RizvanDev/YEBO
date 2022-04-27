@@ -347,22 +347,27 @@ body.--lock {
           transform: translateY(0);
   -webkit-animation-name: titleAnimation;
           animation-name: titleAnimation;
-  -webkit-animation-timing-function: ease-in-out;
-          animation-timing-function: ease-in-out;
-  -webkit-animation-duration: 2.3s;
-          animation-duration: 2.3s;
+  -webkit-animation-timing-function: linear;
+          animation-timing-function: linear;
+  -webkit-animation-delay: 2.5s;
+          animation-delay: 2.5s;
+}
+
+.main__title span:first-child {
+  -webkit-animation-duration: 1s;
+          animation-duration: 1s;
 }
 
 .main__title span:nth-child(2) {
-  -webkit-animation-duration: 2.8s;
-          animation-duration: 2.8s;
+  -webkit-animation-duration: 1.5s;
+          animation-duration: 1.5s;
 }
 
 .main__title span:last-child {
   color: #00ff33;
   white-space: nowrap;
-  -webkit-animation-duration: 4s;
-          animation-duration: 4s;
+  -webkit-animation-duration: 2.2s;
+          animation-duration: 2.2s;
 }
 
 @-webkit-keyframes titleAnimation {
@@ -1510,6 +1515,57 @@ body.--lock {
 .share__link.i svg path {
   stroke: #fff;
   stroke-width: 3;
+}
+
+.preload {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(255, 250, 250, 0.977);
+  z-index: 99;
+}
+
+.preload__container {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+  width: 150px;
+  height: 20px;
+  border-radius: 14px;
+  background-color: #6663;
+}
+
+.preload__item {
+  position: absolute;
+  left: 0;
+  width: 0;
+  height: 100%;
+  border-radius: inherit;
+  background-color: #64c29e;
+  -webkit-animation: preloading 2.1s linear 1;
+          animation: preloading 2.1s linear 1;
+}
+
+@-webkit-keyframes preloading {
+  0% {
+    width: 0;
+  }
+  100% {
+    width: 100%;
+  }
+}
+
+@keyframes preloading {
+  0% {
+    width: 0;
+  }
+  100% {
+    width: 100%;
+  }
 }
 
 @media (max-width: 1600px) {
