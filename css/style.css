@@ -306,8 +306,8 @@ body.--lock {
   height: 100%;
   -o-object-fit: cover;
      object-fit: cover;
-  -o-object-position: bottom;
-     object-position: bottom;
+  -o-object-position: center;
+     object-position: center;
 }
 
 .main__title {
@@ -841,9 +841,11 @@ body.--lock {
   color: #fff;
   -webkit-transition: background-color .2s ease;
   transition: background-color .2s ease;
+  cursor: default;
 }
 
 .form__btn.--emailDone {
+  cursor: pointer;
   background-color: #01bd46;
 }
 
@@ -1531,41 +1533,28 @@ body.--lock {
   position: absolute;
   top: 50%;
   left: 50%;
+  width: 150px;
   -webkit-transform: translate(-50%, -50%);
           transform: translate(-50%, -50%);
-  width: 150px;
-  height: 20px;
-  border-radius: 14px;
-  background-color: #6663;
 }
 
-.preload__item {
+.preload__loading {
+  position: absolute;
+  left: 50%;
+  top: -30px;
+  -webkit-transform: translateX(-50%);
+          transform: translateX(-50%);
+  font-size: 20px;
+  color: #282f35;
+}
+
+.preload__line {
   position: absolute;
   left: 0;
-  width: 0;
-  height: 100%;
-  border-radius: inherit;
-  background-color: #64c29e;
-  -webkit-animation: preloading 2.1s linear 1;
-          animation: preloading 2.1s linear 1;
-}
-
-@-webkit-keyframes preloading {
-  0% {
-    width: 0;
-  }
-  100% {
-    width: 100%;
-  }
-}
-
-@keyframes preloading {
-  0% {
-    width: 0;
-  }
-  100% {
-    width: 100%;
-  }
+  bottom: 0;
+  width: 0%;
+  height: 2px;
+  background-color: #282f35;
 }
 
 @media (max-width: 1600px) {

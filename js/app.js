@@ -5,14 +5,27 @@ import { mySlider, myModal } from "./modules/my-methods.js"
 
 const header = document.querySelector('.header')
 
-
-// preload 
+// preload
 const preloading = () => {
-   document.querySelector('.preload').style.display = 'none'
-   document.body.classList.remove('--lock')
-}
 
-setTimeout(() => preloading(), 2000)
+   let count = 0
+
+   const load = () => {
+
+      ++count
+
+      document.querySelector('.preload__loading').innerHTML = `${count}%`
+      document.querySelector('.preload__line').style.width = `${count}%`
+
+      if (count === 100) {
+         clearInterval(loadInterval)
+         document.querySelector('.preload').style.display = 'none'
+         document.body.classList.remove('--lock')
+      }
+   }
+   const loadInterval = setInterval(load, 20)
+}
+window.addEventListener('load', preloading)
 
 // header and title time
 setTimeout(() => document.querySelector('.main__title').style.visibility = 'visible', 2500)
@@ -43,6 +56,9 @@ const showHeader = () => {
 }
 showHeader()
 
+// share 
+setTimeout(() => document.querySelector('.share').classList.add('--show-icons'), 4000)
+
 // mobile MENU
 const clickMobileMenu = () => {
    header.classList.toggle('--active')
@@ -53,18 +69,14 @@ if (document.querySelector('.menu__icon')) document.querySelector('.menu__icon')
 
 // contact modal
 const showContactModal = () => {
-
-   const modal0bj = {
+   return myModal({
       openModal: document.querySelector('.open-contact'),
       modal: document.querySelector('.contact-modal'),
       modalContainer: document.querySelector('.contact-modal__container'),
       modalClose: document.querySelector('.contact-modal__close'),
-   }
-
-   return myModal(modal0bj)
+   })
 }
 showContactModal()
-
 
 // navigation scroll
 const navigationScroll = () => {
@@ -75,8 +87,8 @@ const navigationScroll = () => {
    if (scrollEnd.length > 0) {
 
       scrollStart.forEach((_, index) => {
+         scrollStart[index].addEventListener('click', event => {
 
-         const scrollingStart = event => {
             event.preventDefault()
 
             let height = scrollEnd[index].offsetTop
@@ -87,9 +99,7 @@ const navigationScroll = () => {
             })
 
             if (document.body.clientWidth < 768) clickMobileMenu()
-         }
-
-         scrollStart[index].addEventListener('click', scrollingStart)
+         })
       })
    }
 }
@@ -97,8 +107,7 @@ navigationScroll()
 
 // articles slider
 const articlesSlider = () => {
-
-   const sliderObj = {
+   return mySlider({
       container: document.querySelector('.articles-slider__container'),
       slides: document.getElementsByClassName('articles-slider__slide'),
       slide: document.querySelector('.articles-slider__slide'),
@@ -112,11 +121,23 @@ const articlesSlider = () => {
       transitionTime: 0.6,
       transitionType: 'ease',
       infinity: true,
-   }
-
-   return mySlider(sliderObj)
+   })
 }
 articlesSlider()
+
+// email
+const emailForm = () => {
+   const emailDone = event => {
+      if (event.target.validity.valid) {
+         return document.querySelector('.form__btn').classList.add('--emailDone')
+      } else {
+         return document.querySelector('.form__btn').classList.remove('--emailDone')
+      }
+   }
+
+   return document.querySelector('.form__input').addEventListener('keyup', emailDone)
+}
+emailForm()
 
 // callback btn, modal
 const callbackUser = () => {
@@ -131,32 +152,18 @@ const callbackUser = () => {
    const showBtn = () => window.pageYOffset > 100 ? callbackBtn.classList.add('--visible-btn') : false
 
    const showModal = () => {
-      const modal0bj = {
+      return myModal({
          openModal: callbackBtn,
          modal: modal,
          modalContainer: modalContainer,
          modalClose: document.querySelector('.callback-modal__close'),
-      }
-
-      return myModal(modal0bj)
+      })
    }
    showModal()
 
-   const emailForm = () => {
-
-      const emailInput = document.querySelector('.form__input')
-      const emailBtn = document.querySelector('.form__btn')
-
-      const emailDone = e => e.target.validity.valid === true ? emailBtn.classList.add('--emailDone') : emailBtn.classList.remove('--emailDone')
-
-      emailInput.addEventListener('keyup', emailDone)
-   }
-   emailForm()
-
    const callbackFormDone = () => {
 
-
-      form.addEventListener('click', (e) => {
+      form.addEventListener('click', e => {
 
          if (e.target.type === 'number') e.target.addEventListener('keyup', () => {
             e.target.value.length >= 10 ? callbackFormBtn.classList.add('--done') : callbackFormBtn.classList.remove('--done')
@@ -172,7 +179,7 @@ const callbackUser = () => {
          if (e.target.type === 'submit' && callbackFormBtn.classList.contains('--done')) {
             modalContainer.classList.add('--load')
             setTimeout(() => modalContainer.classList.add('--show'), 2000)
-            setTimeout(() => closed(), 6000)
+            setTimeout(closed, 6000)
          }
       })
 
@@ -183,6 +190,3 @@ const callbackUser = () => {
    return window.addEventListener('scroll', showBtn)
 }
 callbackUser()
-
-// share 
-setTimeout(() => document.querySelector('.share').classList.add('--show-icons'), 4000)

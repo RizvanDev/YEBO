@@ -1,29 +1,25 @@
 const myObject = {
+   modal: ({ openModal, modal, modalContainer, modalClose }) => {
 
-   modal: (obj) => {
-
-      const { openModal, modal, modalContainer, modalClose } = obj
-
-      const openedModal = () => {
-         modal.classList.add('--opened')
-         modalContainer.classList.add('--opened')
-         document.body.classList.add('--lock')
+      const modalMethods = {
+         0: opening => {
+            modal.classList.add('--opened')
+            modalContainer.classList.add('--opened')
+            document.body.classList.add('--lock')
+         },
+         1: closing => {
+            modal.classList.remove('--opened')
+            modalContainer.classList.remove('--opened')
+            if (!document.querySelector('.header').classList.contains('--active')) document.body.classList.remove('--lock')
+         },
+         2: propagation => event.stopPropagation(),
       }
 
-      const closedModal = () => {
-         modal.classList.remove('--opened')
-         modalContainer.classList.remove('--opened')
-         if (!document.querySelector('.header').classList.contains('--active')) document.body.classList.remove('--lock')
-      }
-
-      openModal.addEventListener('click', openedModal)
-      modalClose.addEventListener('click', closedModal)
-      modal.addEventListener('click', closedModal)
-      modalContainer.addEventListener('click', event => event.stopPropagation())
+      return [openModal, modal, modalContainer, modalClose].forEach((element, index) => {
+         element.addEventListener('click', modalMethods[index] || modalMethods[1])
+      })
    },
-   slider: (obj) => {
-
-      let { container, slides, slide, prevBtn, nextBtn, dots, dotsContainer, autoTime, auto, transitionTime = '0', transitionType = 'linear', transition, infinity } = obj
+   slider: ({ container, slides, slide, prevBtn, nextBtn, dots, dotsContainer, autoTime, auto, transitionTime = '0', transitionType = 'linear', transition, infinity }) => {
 
       let step = 0
 
@@ -31,6 +27,7 @@ const myObject = {
       if (infinity) {
 
          step = 1
+
          container.style.transform = `translate3d(-${step * slide.offsetWidth}px,0,0)`
 
          const firstSlideClone = slides[0].cloneNode(true)
@@ -48,7 +45,11 @@ const myObject = {
          dotsContainer.insertBefore(firstDotClone, dotsContainer.firstChild)
       }
 
-      dots = [...dots]
+      // scroll function
+      const scrolling = () => container.style.transform = `translate3d(-${step * slide.offsetWidth}px,0,0)`
+
+      // transition   
+      const transitionScroll = () => transition ? container.style.transition = `all ${transitionTime}s ${transitionType}` : false
 
       const infinityScroll = () => {
 
@@ -66,11 +67,8 @@ const myObject = {
 
       // buttons
       if (prevBtn) prevBtn.addEventListener('click', () => {
-
          step--
-
          if (step < 0) step = slides.length - 1
-
          infinityScroll()
          transitionScroll()
          scrolling()
@@ -79,11 +77,8 @@ const myObject = {
       })
 
       if (nextBtn) nextBtn.addEventListener('click', () => {
-
          step++
-
          if (step >= slides.length) step = 0
-
          infinityScroll()
          transitionScroll()
          scrolling()
@@ -95,11 +90,8 @@ const myObject = {
       let intervalScroll
 
       const scroll = () => {
-
          step++
-
          if (step >= slides.length) step = 0
-
          infinityScroll()
          transitionScroll()
          scrolling()
@@ -111,7 +103,7 @@ const myObject = {
 
 
       // dots
-      const removeActiveDots = () => dots.forEach((_, index) => dots[index].classList.remove('--active'))
+      const removeActiveDots = () => Array.prototype.forEach.call(dots, ((_, index) => dots[index].classList.remove('--active')))
 
       const activeDot = () => {
 
@@ -126,76 +118,60 @@ const myObject = {
       }
 
       const pushDot = () => {
-
-         dots.forEach((_, index) => {
+         Array.prototype.forEach.call(dots, ((_, index) => {
             dots[index].addEventListener('click', () => {
-
                removeActiveDots()
-
                dots[index].classList.add('--active')
                step = index
-
                infinityScroll()
                scrolling()
                transitionScroll()
                clearInterval(intervalScroll)
             })
-         })
-
+         }))
       }
       pushDot()
 
-      // scroll function
-      const scrolling = () => container.style.transform = `translate3d(-${step * slide.offsetWidth}px,0,0)`
-
       // swipe, drag
-      let startX, moveX, endX
+      const swipeFn = () => {
 
-      const touchStart = event => startX = event.touches[0].clientX
-      const touchMove = event => moveX = event.touches[0].clientX
+         let startX, moveX, endX
 
-      const touchEnd = () => {
+         const swipeMethods = {
+            ['touchstart']: event => startX = event.touches[0].clientX,
+            ['touchmove']: event => moveX = event.touches[0].clientX,
+            ['touchend']: () => {
 
-         endX = startX - moveX
+               endX = startX - moveX
 
-         if (endX > 60) {
+               if (endX > 60) {
+                  step++
+                  if (step >= slides.length) step = 0
+                  infinityScroll()
+                  scrolling()
+                  activeDot()
+                  transitionScroll()
+                  clearInterval(intervalScroll)
+               }
 
-            step++
+               if (endX < -60) {
+                  step--
+                  if (step < 0) step = slides.length - 1
+                  infinityScroll()
+                  scrolling()
+                  activeDot()
+                  transitionScroll()
+                  clearInterval(intervalScroll)
+               }
 
-            if (step >= slides.length) step = 0
-
-            infinityScroll()
-            scrolling()
-            activeDot()
-            transitionScroll()
-            clearInterval(intervalScroll)
+               return startX = moveX = undefined
+            }
          }
 
-         if (endX < -60) {
-
-            step--
-
-            if (step < 0) step = slides.length - 1
-
-            infinityScroll()
-            scrolling()
-            activeDot()
-            transitionScroll()
-            clearInterval(intervalScroll)
-         }
-
-         return startX = moveX = undefined
+         return ['touchstart', 'touchmove', 'touchend'].forEach(eType => container.addEventListener(eType, swipeMethods[eType], { passive: true }))
       }
-
-      container.addEventListener('touchstart', touchStart, { passive: true })
-      container.addEventListener('touchmove', touchMove, { passive: true })
-      container.addEventListener('touchend', touchEnd, { passive: true })
-
-      // transition   
-      const transitionScroll = () => transition ? container.style.transition = `all ${transitionTime}s ${transitionType}` : false
-
+      swipeFn()
    }
-
 }
 
 export const { modal: myModal, slider: mySlider } = myObject
