@@ -25,7 +25,7 @@ const preloading = () => {
    }
    const loadInterval = setInterval(load, 20)
 }
-window.addEventListener('load', preloading)
+preloading()
 
 // header and title time
 setTimeout(() => document.querySelector('.main__title').style.visibility = 'visible', 2500)
